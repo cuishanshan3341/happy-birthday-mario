@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Happy Birthday Mario ❤️</title>
 
 <style>
@@ -14,73 +15,146 @@ box-sizing:border-box;
 }
 
 body{
-font-family:Arial, sans-serif;
-background:linear-gradient(#78d7ff,#dff6ff);
+font-family: "Trebuchet MS", sans-serif;
+background:linear-gradient(to bottom,#7ad7ff 0%,#dff6ff 100%);
 overflow-x:hidden;
 text-align:center;
+color:#333;
 }
+
+/* 云朵 */
+
+.cloud{
+position:absolute;
+font-size:70px;
+animation:moveCloud 35s linear infinite;
+opacity:.9;
+}
+
+.cloud:nth-child(1){
+top:50px;
+left:-200px;
+}
+
+.cloud:nth-child(2){
+top:150px;
+left:-350px;
+animation-delay:10s;
+}
+
+.cloud:nth-child(3){
+top:280px;
+left:-250px;
+animation-delay:20s;
+}
+
+@keyframes moveCloud{
+from{
+transform:translateX(0);
+}
+to{
+transform:translateX(140vw);
+}
+}
+
+/* 标题 */
 
 .hero{
-padding:50px 20px;
+padding-top:100px;
+padding-bottom:40px;
 }
 
-.title{
-font-size:55px;
+.logo{
+font-size:60px;
+font-weight:900;
 color:#e60012;
-font-weight:bold;
-margin-bottom:10px;
+text-shadow:4px 4px #ffd700;
 }
 
-.subtitle{
-font-size:24px;
-margin-bottom:30px;
+.level{
+font-size:26px;
+margin-top:15px;
+color:#0057b8;
 }
+
+/* 图片 */
 
 .photo{
 width:90%;
 max-width:450px;
 border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.25);
+margin-top:40px;
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+animation:floatPhoto 5s ease-in-out infinite;
+}
+
+@keyframes floatPhoto{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-12px);
+}
+}
+
+/* 卡片 */
+
+.card{
+background:white;
+max-width:850px;
+margin:50px auto;
+padding:40px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.card h2{
+font-size:40px;
+color:#e60012;
+margin-bottom:20px;
 }
 
 .message{
-max-width:700px;
-margin:40px auto;
-background:white;
-padding:30px;
-border-radius:20px;
-box-shadow:0 8px 20px rgba(0,0,0,.1);
-font-size:20px;
+font-size:22px;
 line-height:1.8;
+min-height:220px;
 }
+
+/* 按钮 */
 
 .btn{
 background:#ffcc00;
-border:none;
-padding:15px 35px;
+color:#000;
+padding:18px 35px;
 font-size:22px;
+border:none;
 border-radius:50px;
 cursor:pointer;
-margin-top:20px;
+margin-top:30px;
 font-weight:bold;
+transition:.3s;
 }
 
 .btn:hover{
-transform:scale(1.05);
+transform:scale(1.08);
 }
+
+/* 惊喜 */
 
 .hidden{
 display:none;
 }
 
-.love{
-margin-top:25px;
-font-size:28px;
-color:#d6004d;
+.surprise{
+margin-top:35px;
+font-size:30px;
 font-weight:bold;
+color:#d6004d;
 }
 
-.fireworks{
+/* 爱心 */
+
+.hearts{
 position:fixed;
 top:0;
 left:0;
@@ -92,25 +166,31 @@ overflow:hidden;
 
 .heart{
 position:absolute;
-font-size:30px;
-animation:floatUp 8s linear infinite;
+font-size:24px;
+animation:rise linear infinite;
 }
 
-@keyframes floatUp{
+@keyframes rise{
 0%{
 transform:translateY(100vh);
 opacity:1;
 }
 100%{
-transform:translateY(-100px);
+transform:translateY(-150px);
 opacity:0;
 }
 }
 
-footer{
-margin:60px 0;
-font-size:18px;
-color:#666;
+/* 结尾 */
+
+.footer{
+padding:80px 20px;
+font-size:24px;
+font-weight:bold;
+}
+
+.footer span{
+color:#d6004d;
 }
 
 </style>
@@ -118,94 +198,118 @@ color:#666;
 
 <body>
 
-<div class="fireworks" id="hearts"></div>
+<div class="cloud">☁️</div>
+<div class="cloud">☁️</div>
+<div class="cloud">☁️</div>
+
+<div class="hearts" id="hearts"></div>
 
 <div class="hero">
 
-<div class="title">
-🍄 SUPER MARIO BIRTHDAY EDITION 🍄
+<div class="logo">
+🍄 SUPER MARIO 🍄
 </div>
 
-<div class="subtitle">
-Level 32 Unlocked 🎮
+<div class="level">
+LEVEL 32 UNLOCKED 🎮
 </div>
 
 <img
 class="photo"
 src="微信图片_20260613084536_383_2.jpg"
-alt="Mario & Iris"
->
+alt="Mario and Iris">
 
 </div>
 
-<div class="message">
+<div class="card">
 
-<h2>Happy Birthday Mario! 🎂</h2>
+<h2>Happy Birthday Mario 🎂</h2>
 
-<br>
+<div id="typing" class="message"></div>
+
+<button class="btn" onclick="openGift()">
+🎁 OPEN GIFT
+</button>
+
+<div id="gift" class="hidden">
+
+<div class="surprise">
+I Love You Mario ❤️
+<br><br>
+Love,<br>
+Iris ❤️
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+⭐ Player One: Mario 🎮
+<br><br>
+❤️ Player Two: <span>Iris</span> ❤️
+
+</div>
+
+<script>
+
+/* 打字机 */
+
+const text=`
 
 Today is your special level-up day.
-
-<br><br>
 
 Thank you for being my comfort,
 my laughter,
 my safe place,
 and my favourite adventure.
 
-<br><br>
-
 No matter how many levels life gives us,
 I hope we continue playing together.
-
-<br><br>
 
 May this year bring you happiness,
 success,
 good health,
 and all the wonderful things you deserve.
 
-<br><br>
+Happy 32nd Birthday Mario ❤️
 
-Happy 32nd Birthday ❤️
+`;
 
-<br><br>
+let i=0;
 
-<button class="btn" onclick="showMessage()">
-🎁 Open Birthday Surprise
-</button>
+function typeWriter(){
 
-<div id="surprise" class="hidden">
+if(i<text.length){
 
-<div class="love">
+document.getElementById("typing").innerHTML+=text.charAt(i);
 
-I Love You Mario ❤️
+i++;
 
-<br><br>
+setTimeout(typeWriter,35);
 
-Love,<br>
-Iris ❤️
-
-</div>
-
-</div>
-
-</div>
-
-<footer>
-⭐ Player One: Mario 🎮<br>
-❤️ Player Two: Iris ❤️
-</footer>
-
-<script>
-
-function showMessage(){
-document.getElementById("surprise").classList.remove("hidden");
 }
 
-for(let i=0;i<40;i++){
+}
 
-const heart=document.createElement("div");
+typeWriter();
+
+/* 礼物 */
+
+function openGift(){
+
+document.getElementById("gift").classList.remove("hidden");
+
+launchFireworks();
+
+}
+
+/* 爱心 */
+
+for(let i=0;i<50;i++){
+
+let heart=document.createElement("div");
 
 heart.className="heart";
 
@@ -214,13 +318,51 @@ heart.innerHTML="❤️";
 heart.style.left=Math.random()*100+"vw";
 
 heart.style.animationDuration=
-(5+Math.random()*5)+"s";
+(5+Math.random()*8)+"s";
 
 heart.style.fontSize=
-(20+Math.random()*20)+"px";
+(18+Math.random()*25)+"px";
 
-document.getElementById("hearts")
-.appendChild(heart);
+document.getElementById("hearts").appendChild(heart);
+
+}
+
+/* 烟花 */
+
+function launchFireworks(){
+
+for(let i=0;i<80;i++){
+
+let star=document.createElement("div");
+
+star.innerHTML="✨";
+
+star.style.position="fixed";
+
+star.style.left="50%";
+
+star.style.top="50%";
+
+star.style.fontSize="30px";
+
+star.style.pointerEvents="none";
+
+document.body.appendChild(star);
+
+let x=(Math.random()-0.5)*1000;
+
+let y=(Math.random()-0.5)*800;
+
+star.animate([
+{transform:"translate(0,0)",opacity:1},
+{transform:`translate(${x}px,${y}px)`,opacity:0}
+],{
+duration:2000
+});
+
+setTimeout(()=>star.remove(),2000);
+
+}
 
 }
 
